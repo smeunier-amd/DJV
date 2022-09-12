@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include <djvAV/IO.h>
+
 #include <djvImage/Type.h>
 
 #include <djvSystem/ISystem.h>
@@ -39,12 +41,6 @@ namespace djv
 
     namespace AV
     {
-        namespace IO
-        {
-            class Info;
-
-        } // namespace IO
-            
         //! Thumbnail error.
         class ThumbnailError : public std::runtime_error
         {

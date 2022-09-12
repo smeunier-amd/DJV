@@ -8,6 +8,10 @@
 
 #include <tiffio.h>
 
+#if defined(GetObject)
+#undef GetObject
+#endif // GetObject
+
 namespace djv
 {
     namespace AV

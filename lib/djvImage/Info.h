@@ -8,11 +8,15 @@
 
 #include <djvCore/Memory.h>
 
-#include <glad.h>
+#include <glad/glad.h>
 
 #if defined(GetObject)
 #undef GetObject
 #endif // GetObject
+
+#if defined(APIENTRY)
+#undef APIENTRY
+#endif // APIENTRY
 
 namespace djv
 {

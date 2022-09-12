@@ -27,7 +27,8 @@ set(source
 add_library(djvMath ${header} ${source})
 set(LIBRARIES
     djvCore
-    GLM)
+    glm
+    rapidjson)
 target_link_libraries(djvMath ${LIBRARIES})
 set_target_properties(
     djvMath

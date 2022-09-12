@@ -20,7 +20,8 @@ add_library(djvImage ${header} ${source})
 target_compile_definitions(djvImage PUBLIC IlmImf_FOUND)
 set(LIBRARIES
     djvSystem
-    IlmBase)
+    IlmBase::Half
+    glad::glad)
 target_link_libraries(djvImage ${LIBRARIES})
 set_target_properties(
     djvImage

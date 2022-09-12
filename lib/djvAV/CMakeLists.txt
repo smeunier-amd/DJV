@@ -101,21 +101,21 @@ set(LIBRARIES
     djvOCIO
     djvAudio
     #OpenAL
-    RtAudio)
+    RtAudio::rtaudio)
 if(FFmpeg_FOUND)
     set(LIBRARIES ${LIBRARIES} FFmpeg)
 endif()
 if(JPEG_FOUND)
-    set(LIBRARIES ${LIBRARIES} JPEG)
+    set(LIBRARIES ${LIBRARIES} ${JPEG_LIBRARIES})
 endif()
 if(PNG_FOUND)
-    set(LIBRARIES ${LIBRARIES} PNG)
+    set(LIBRARIES ${LIBRARIES} png)
 endif()
 if(OpenEXR_FOUND)
     set(LIBRARIES ${LIBRARIES} OpenEXR::IlmImf)
 endif()
 if(TIFF_FOUND)
-    set(LIBRARIES ${LIBRARIES} TIFF)
+    set(LIBRARIES ${LIBRARIES} tiff)
 endif()
 target_link_libraries(djvAV ${LIBRARIES})
 set_target_properties(

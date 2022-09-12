@@ -13,7 +13,7 @@ set(source
 add_library(djvGeom ${header} ${source})
 set(LIBRARIES
     djvCore
-    GLM)
+    glm)
 target_link_libraries(djvGeom ${LIBRARIES})
 set_target_properties(
     djvGeom

@@ -18,6 +18,11 @@
 
 #include <array>
 
+// TODO: find the header leaking this...
+#if defined(GetObject)
+#undef GetObject
+#endif
+
 using namespace djv::Core;
 
 namespace djv

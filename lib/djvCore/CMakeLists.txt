@@ -57,7 +57,7 @@ endif()
 
 add_library(djvCore ${header} ${source})
 set(LIBRARIES
-    RapidJSON)
+    rapidjson)
 if(${CMAKE_HOST_SYSTEM_PROCESSOR} MATCHES "arm" AND NOT APPLE)
     set(LIBRARIES ${LIBRARIES} atomic)
 endif()

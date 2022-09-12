@@ -15,7 +15,7 @@ set(source
 add_library(djvAudio ${header} ${source})
 set(LIBRARIES
     djvSystem
-    RtAudio)
+    RtAudio::rtaudio)
 target_link_libraries(djvAudio ${LIBRARIES})
 set_target_properties(
     djvAudio

@@ -20,7 +20,7 @@ add_library(djvRender2D ${header} ${source})
 set(LIBRARIES
     djvOCIO
     djvGL
-    FreeType)
+    freetype)
 target_link_libraries(djvRender2D ${LIBRARIES})
 set_target_properties(
     djvRender2D

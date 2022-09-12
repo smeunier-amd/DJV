@@ -34,4 +34,4 @@ endif()
 #        add_subdirectory(djvViewAppPy)
 #    endif()
 #endif()
-
+add_subdirectory(fseq)

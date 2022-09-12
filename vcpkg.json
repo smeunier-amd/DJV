@@ -1,0 +1,132 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg/master/scripts/vcpkg.schema.json",
+  "name": "djv",
+  "version": "2.0.8",
+  "builtin-baseline": "8e3595fad04f60f55250ff0e2f2d4e7e7a580a50",
+  "dependencies": [
+    {
+      "name": "ffmpeg",
+      "platform": "x64 & windows"
+    },
+    {
+      "name": "freetype",
+      "platform": "x64 & windows"
+    },
+    {
+      "name": "glad",
+      "platform": "x64 & windows"
+    },
+    {
+      "name": "glfw3",
+      "platform": "x64 & windows"
+    },
+    {
+      "name": "glm",
+      "platform": "x64 & windows"
+    },
+    {
+      "name": "libpng",
+      "platform": "x64 & windows"
+    },
+    {
+      "name": "libjpeg-turbo",
+      "platform": "x64 & windows"
+    },
+    {
+      "name": "openexr",
+      "platform": "x64 & windows"
+    },
+    {
+      "name": "opencolorio",
+      "platform": "x64 & windows"
+    },
+    {
+      "name": "rapidjson",
+      "platform": "x64 & windows"
+    },
+    {
+      "name": "rtaudio",
+      "platform": "x64 & windows"
+    },
+    {
+      "name": "tiff",
+      "platform": "x64 & windows"
+    },
+    {
+      "name": "zlib",
+      "platform": "x64 & windows"
+    }
+  ],
+  "overrides": [
+    {
+      "name": "ffmpeg",
+      "version": "4.2-2",
+      "port-version": 0
+    },
+    {
+      "name": "freetype",
+      "version": "2.10.1-1",
+      "port-version": 0
+    },
+    {
+      "name": "glad",
+      "version": "0.1.36",
+      "port-version": 0
+    },
+    {
+      "name": "glfw3",
+      "version": "3.3-3",
+      "port-version": 0
+    },
+    {
+      "name": "glm",
+      "version": "0.9.9.5-3",
+      "port-version": 0
+    },
+    {
+      "name": "libpng",
+      "version": "1.6.37-6",
+      "port-version": 0
+    },
+    {
+      "name": "libjpeg-turbo",
+      "version": "2.1.3",
+      "port-version": 3
+    },
+    {
+      "name": "openexr",
+      "version": "2.5.0",
+      "port-version": 3
+    },
+    {
+      "name": "opencolorio",
+      "version": "1.1.1",
+      "port-version": 5
+    },
+    {
+      "name": "rapidjson",
+      "version": "2020-09-14",
+      "port-version": 2
+    },
+    {
+      "name": "rtaudio",
+      "version": "2021-11-16",
+      "port-version": 0
+    },
+    {
+      "name": "tiff",
+      "version": "4.3.0",
+      "port-version": 8
+    },
+    {
+      "name": "zlib",
+      "version": "1.2.12",
+      "port-version": 1
+    },
+    {
+      "name": "yaml-cpp",
+      "version": "0.6.2-3",
+      "port-version": 0
+    }
+  ]
+}

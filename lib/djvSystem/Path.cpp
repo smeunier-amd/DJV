@@ -10,7 +10,7 @@
 #include <algorithm>
 #include <array>
 
-#include <fseq.h>
+#include <fseq/fseq.h>
 
 namespace djv
 {
@@ -182,7 +182,7 @@ namespace djv
             {
                 FSeqFileNameSizes sizes;
                 fseqFileNameSizesInit(&sizes);
-                fseqFileNameParseSizes(in.c_str(), &sizes, FSEQ_STRING_LEN);
+                fseqFileNameParseSizes(in.c_str(), &sizes, FSEQ_STRING_LEN, NULL);
                 path = in.substr(0, sizes.path);
                 base = in.substr(sizes.path, sizes.base);
                 number = in.substr(sizes.path + static_cast<size_t>(sizes.base), sizes.number);

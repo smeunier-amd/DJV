@@ -1,0 +1,6 @@
+[submodule "vcpkg"]
+	path = vcpkg
+	url = https://github.com/Microsoft/vcpkg.git
+[submodule "lib/fseq"]
+	path = lib/fseq
+	url = https://github.com/darbyjohnston/FSeq.git

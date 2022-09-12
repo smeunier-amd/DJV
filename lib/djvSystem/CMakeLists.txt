@@ -72,7 +72,7 @@ add_library(djvSystem ${header} ${source})
 set(LIBRARIES
     djvMath
     djvCore
-    FSeq
+    fseq
     Threads::Threads
     ${CMAKE_DL_LIBS})
 if (WIN32)

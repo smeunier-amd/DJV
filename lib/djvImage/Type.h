@@ -9,11 +9,15 @@
 #include <djvCore/Enum.h>
 #include <djvCore/RapidJSON.h>
 
-#include <glad.h>
+#include <glad/glad.h>
 
 #if defined(GetObject)
 #undef GetObject
 #endif // GetObject
+
+#if defined(APIENTRY)
+#undef APIENTRY
+#endif // APIENTRY
 
 #include <OpenEXR/half.h>
 
