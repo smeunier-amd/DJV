@@ -174,7 +174,7 @@ if (${libpng_FOUND})
 endif()
 
 if (${OpenEXR_FOUND})
-    set_target_properties(IlmBase::Iex IlmBase::Half IlmBase::Imath IlmBase::IexMath OpenEXR::IlmImf OpenEXR::IlmImfUtil OpenEXR::IlmImfConfig PROPERTIES INTERFACE_COMPILE_DEFINITIONS OpenEXR_FOUND)
+    set_target_properties(IlmBase OpenEXR::IlmImf OpenEXR::IlmImfUtil OpenEXR::IlmImfConfig PROPERTIES INTERFACE_COMPILE_DEFINITIONS OpenEXR_FOUND)
 endif()
 
 #-------------------------------------------------------------------------------
