@@ -128,71 +128,37 @@ find_package(Threads REQUIRED)
 find_package(OpenGL REQUIRED)
 
 # Add Python dependency.
-if(DJV_PYTHON)
-    find_package(Python)
-endif()
+#if(DJV_PYTHON)
+#    find_package(Python)
+#endif()
 
 # Set the list of required third party dependencies.
-set(DJV_THIRD_PARTY_REQUIRED_DEPS
-    glad
-    FSeq
-    ZLIB
-    GLM
-    GLFW
-    PicoJSON
-    #OpenAL
-    RtAudio
-    IlmBase
-    PNG
-    OCIO
-    #OTIO
-    FreeType)
+find_package(glad CONFIG REQUIRED)
+find_package(ZLIB REQUIRED)
+find_package(glm CONFIG REQUIRED)
+find_package(glfw3 CONFIG REQUIRED)
+find_package(RapidJSON CONFIG REQUIRED)
+find_package(RtAudio CONFIG REQUIRED)
+find_package(libpng CONFIG REQUIRED)
+find_package(OpenColorIO CONFIG REQUIRED)
+find_package(Freetype REQUIRED)
+find_package(FFmpeg REQUIRED)
+find_package(JPEG REQUIRED)
+# TODO: TIFF
+find_package(IlmBase CONFIG REQUIRED)
+find_package(OpenEXR CONFIG REQUIRED)
+find_package(yaml-cpp CONFIG REQUIRED)
+# TODO: OpenNURBS
 
-# Set the list of optional third party dependencies.
-if(WIN32)
-else()
-    set(DJV_THIRD_PARTY_OPTIONAL_DEPS
-        ${DJV_THIRD_PARTY_OPTIONAL_DEPS}
-        #MbedTLS
-        )
-endif()
-set(DJV_THIRD_PARTY_OPTIONAL_DEPS
-    ${DJV_THIRD_PARTY_OPTIONAL_DEPS}
-    #curl
-    FFmpeg
-    JPEG
-    TIFF
-    OpenEXR)
-if(WIN32)
-    set(DJV_THIRD_PARTY_OPTIONAL_DEPS
-        ${DJV_THIRD_PARTY_OPTIONAL_DEPS}
-        OpenNURBS)
-else()
+# Workaround missing properties...
+if (${libpng_FOUND})
+    set(PNG_FOUND ${libpng_FOUND})
+    set_target_properties(png PROPERTIES
+        INTERFACE_COMPILE_DEFINITIONS PNG_FOUND)
 endif()
 
-# Set whether shared libraries are used for the dependencies.
-set(glad_SHARED_LIBS ${BUILD_SHARED_LIBS})
-set(FSeq_SHARED_LIBS ${BUILD_SHARED_LIBS})
-set(ZLIB_SHARED_LIBS ${BUILD_SHARED_LIBS})
-#set(OPENAL_SHARED_LIBS ON)
-set(RtAudio_SHARED_LIBS ${BUILD_SHARED_LIBS})
-set(JPEG_SHARED_LIBS ${BUILD_SHARED_LIBS})
-set(TIFF_SHARED_LIBS ${BUILD_SHARED_LIBS})
-set(PNG_SHARED_LIBS ${BUILD_SHARED_LIBS})
-set(ILMBASE_SHARED_LIBS ${BUILD_SHARED_LIBS})
-set(OPENEXR_SHARED_LIBS ${BUILD_SHARED_LIBS})
-set(OCIO_SHARED_LIBS ${BUILD_SHARED_LIBS})
-set(OTIO_SHARED_LIBS ${BUILD_SHARED_LIBS})
-set(FFmpeg_SHARED_LIBS ON)
-
-# Add the third party dependencies.
-foreach(PACKAGE ${DJV_THIRD_PARTY_REQUIRED_DEPS})
-    find_package(${PACKAGE} REQUIRED)
-endforeach()
-if(DJV_THIRD_PARTY_OPTIONAL)
-    foreach(PACKAGE ${DJV_THIRD_PARTY_OPTIONAL_DEPS})
-        find_package(${PACKAGE})
-    endforeach()
+if (${OpenEXR_FOUND})
+    set_target_properties(IlmBase OpenEXR::IlmImf OpenEXR::IlmImfUtil OpenEXR::IlmImfConfig PROPERTIES INTERFACE_COMPILE_DEFINITIONS OpenEXR_FOUND)
 endif()
 
 #-------------------------------------------------------------------------------

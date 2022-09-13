@@ -53,8 +53,8 @@ namespace djv
                 {
                     switch (severity)
                     {
-                    case GL_DEBUG_SEVERITY_HIGH_KHR:
-                    case GL_DEBUG_SEVERITY_MEDIUM_KHR:
+                    case GL_DEBUG_SEVERITY_HIGH:
+                    case GL_DEBUG_SEVERITY_MEDIUM:
                         if (auto log = reinterpret_cast<const Context *>(userParam)->getSystemT<LogSystem>())
                         {
                             log->log("djv::CmdLine::GLFW::System", message);

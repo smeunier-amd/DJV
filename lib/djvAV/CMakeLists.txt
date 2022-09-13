@@ -164,24 +164,21 @@ endif()
 
 add_library(djvAV ${header} ${source})
 set(LIBRARIES
-    glad
-    GLFW
-    FreeType
+    glad::glad
+    glfw
+    Freetype::Freetype
     IlmBase::Imath
     IlmBase::IlmThread
-    OCIO
+    OpenColorIO
     #OpenAL
-    RtAudio
+    RtAudio::rtaudio
     OpenGL::GL
     djvCore)
 if(FFmpeg_FOUND)
     set(LIBRARIES ${LIBRARIES} FFmpeg)
 endif()
-if(JPEG_FOUND)
-    set(LIBRARIES ${LIBRARIES} JPEG)
-endif()
 if(PNG_FOUND)
-    set(LIBRARIES ${LIBRARIES} PNG)
+    set(LIBRARIES ${LIBRARIES} png)
 endif()
 if(OpenEXR_FOUND)
     set(LIBRARIES ${LIBRARIES} OpenEXR::IlmImf)
@@ -191,6 +188,10 @@ if(TIFF_FOUND)
     set(LIBRARIES ${LIBRARIES} TIFF)
 endif()
 target_link_libraries(djvAV ${LIBRARIES})
+if(JPEG_FOUND)
+    target_link_libraries(djvAV ${JPEG_LIBRARIES})
+    target_include_directories(djvAV PRIVATE ${JPEG_INCLUDE_DIR})
+endif()
 set_target_properties(
     djvAV
     PROPERTIES

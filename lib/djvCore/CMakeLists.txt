@@ -138,9 +138,8 @@ endif()
 
 add_library(djvCore ${header} ${source})
 set(LIBRARIES
-    GLM
-    PicoJSON
-    FSeq
+    glm
+    fseq
     Threads::Threads
     ${CMAKE_DL_LIBS})
 if (WIN32)

@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include <djvAV/IO.h>
 #include <djvAV/Pixel.h>
 
 #include <djvCore/ISystem.h>
@@ -25,12 +26,6 @@ namespace djv
 
     namespace AV
     {
-        namespace IO
-        {
-            class Info;
-
-        } // namespace IO
-
         namespace Image
         {
             class Size;

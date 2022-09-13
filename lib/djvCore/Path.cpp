@@ -10,7 +10,7 @@
 
 extern "C"
 {
-#include <fseq.h>
+#include <fseq/fseq.h>
 
 } // extern "C"
 
@@ -160,7 +160,7 @@ namespace djv
             {
                 FSeqFileNameSizes sizes;
                 fseqFileNameSizesInit(&sizes);
-                fseqFileNameParseSizes(in.c_str(), &sizes, FSEQ_STRING_LEN);
+                fseqFileNameParseSizes(in.c_str(), &sizes, FSEQ_STRING_LEN, nullptr);
                 path = in.substr(0, sizes.path);
                 base = in.substr(sizes.path, sizes.base);
                 number = in.substr(sizes.path + static_cast<size_t>(sizes.base), sizes.number);

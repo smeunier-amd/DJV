@@ -17,4 +17,4 @@ if(DJV_PYTHON)
         add_subdirectory(djvViewAppPy)
     endif()
 endif()
-
+add_subdirectory(fseq)

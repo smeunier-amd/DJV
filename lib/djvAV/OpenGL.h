@@ -6,7 +6,11 @@
 
 #include <djvAV/AV.h>
 
-#include <glad.h>
+#include <glad/glad.h>
+
+#if defined(APIENTRY)
+    #undef APIENTRY
+#endif
 
 namespace djv
 {
