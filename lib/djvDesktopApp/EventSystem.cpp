@@ -2,6 +2,11 @@
 // Copyright (c) 2004-2020 Darby Johnston
 // All rights reserved.
 
+// TODO: fix hardware blit
+//#if defined(DJV_OPENGL_ES2)
+    #define BLIT_WITH_SHADER 1
+//#endif
+
 #include <djvDesktopApp/EventSystem.h>
 
 #include <djvUI/Style.h>
@@ -11,26 +16,26 @@
 
 #include <djvAV/OpenGLOffscreenBuffer.h>
 #include <djvAV/Render2D.h>
-#if defined(DJV_OPENGL_ES2)
+#if defined(BLIT_WITH_SHADER)
 #include <djvAV/OpenGLMesh.h>
 #include <djvAV/OpenGLShader.h>
 #include <djvAV/Shader.h>
-#endif // DJV_OPENGL_ES2
+#endif // BLIT_WITH_SHADER
 
 #include <djvCore/Context.h>
 #include <djvCore/Event.h>
 #include <djvCore/IObject.h>
-#if defined(DJV_OPENGL_ES2)
+#if defined(BLIT_WITH_SHADER)
 #include <djvCore/ResourceSystem.h>
-#endif // DJV_OPENGL_ES2
+#endif // BLIT_WITH_SHADER
 #include <djvCore/Timer.h>
 
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
-#if defined(DJV_OPENGL_ES2)
+#if defined(BLIT_WITH_SHADER)
 #include <glm/gtc/matrix_transform.hpp>
-#endif // DJV_OPENGL_ES2
+#endif // BLIT_WITH_SHADER
 
 #include <codecvt>
 #include <locale>
@@ -69,9 +74,9 @@ namespace djv
             bool redrawRequest = true;
             std::shared_ptr<AV::Render2D::Render> render;
             std::shared_ptr<AV::OpenGL::OffscreenBuffer> offscreenBuffer;
-#if defined(DJV_OPENGL_ES2)
+#if defined(BLIT_WITH_SHADER)
             std::shared_ptr<AV::OpenGL::Shader> shader;
-#endif // DJV_OPENGL_ES2
+#endif // BLIT_WITH_SHADER
             std::shared_ptr<Time::Timer> statsTimer;
         };
 
@@ -88,13 +93,13 @@ namespace djv
             glfwGetWindowContentScale(p.glfwWindow, &contentScale.x, &contentScale.y);
             _contentScale(contentScale);
 
-#if defined(DJV_OPENGL_ES2)
+#if defined(BLIT_WITH_SHADER)
             auto resourceSystem = context->getSystemT<ResourceSystem>();
             const Core::FileSystem::Path shaderPath = resourceSystem->getPath(Core::FileSystem::ResourcePath::Shaders);
             p.shader = AV::OpenGL::Shader::create(AV::Render::Shader::create(
                 Core::FileSystem::Path(shaderPath, "djvAVRender2DVertex.glsl"),
                 Core::FileSystem::Path(shaderPath, "djvAVRender2DFragment.glsl")));
-#endif // DJV_OPENGL_ES2
+#endif // BLIT_WITH_SHADER
 
             glfwGetFramebufferSize(glfwWindow, &p.resize.x, &p.resize.y);
             {
@@ -318,7 +323,7 @@ namespace djv
                     GLsizei(size.h));
                 glClearColor(0.F, 0.F, 0.F, 0.F);
                 glClear(GL_COLOR_BUFFER_BIT);
-#if defined(DJV_OPENGL_ES2)
+#if defined(BLIT_WITH_SHADER)
                 p.shader->bind();
                 const auto viewMatrix = glm::ortho(
                     0.F,
@@ -382,7 +387,7 @@ namespace djv
                 vbo->copy(vboData);
                 auto vao = AV::OpenGL::VAO::create(AV::OpenGL::VBOType::Pos2_F32_UV_U16, vbo->getID());
                 vao->draw(GL_TRIANGLES, 0, 6);
-#else // DJV_OPENGL_ES2
+#else // BLIT_WITH_SHADER
                 glBindFramebuffer(GL_READ_FRAMEBUFFER, p.offscreenBuffer->getID());
                 glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
                 glBlitFramebuffer(
@@ -390,7 +395,7 @@ namespace djv
                     0, 0, size.w, size.h,
                     GL_COLOR_BUFFER_BIT,
                     GL_NEAREST);
-#endif // DJV_OPENGL_ES2
+#endif // BLIT_WITH_SHADER
             }
         }
 
