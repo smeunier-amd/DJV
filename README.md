@@ -18,10 +18,11 @@ Microsoft Windows. Source code is provided under a BSD style open source license
 Building the Code
 -----------------
 
-* [Building on Linux](https://darbyjohnston.github.io/DJV/build_linux.html)
-* [Building on OS X](https://darbyjohnston.github.io/DJV/build_osx.html)
-* [Building on Windows](https://darbyjohnston.github.io/DJV/build_windows.html)
-
+* `git submodule update --init --recursive`
+* `.\vcpkg\bootstrap-vcpkg.bat -disableMetrics`
+* `.\vcpkg\vcpkg.exe install`
+* configure cmake adding `-DCMAKE_TOOLCHAIN_FILE=${workspaceFolder}/vcpkg/scripts/buildsystems/vcpkg.cmake`
+* build using cmake
 
 License
 -------
